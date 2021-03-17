@@ -11,12 +11,12 @@ public class MainClass {
 		System.out.print("How many employees would you like to show? ");
 		int quantEmp = in.nextInt();
 				
-		Employee[] emp = new Employee[quantEmp];
+		Employee[] emp = new Employee[20];
 		int countF = 0, countM = 0;
 		
 		//System.out.println("\nEmployees data: ");
-		for (int i=0; i < emp.length; i++) { //testar fazer isso dentro de um método na outra classe
-			System.out.println("\nEmployee " + i + ":");
+		for (int i=0; i < quantEmp; i++) { //testar fazer isso dentro de um método na outra classe
+			System.out.println("\nEmployee " + (i+1) + ":");
 			System.out.print("Name: ");
 			in.nextLine();
 			String name = in.nextLine();
@@ -37,16 +37,17 @@ public class MainClass {
 			}
 		}
 		
-		for (int i=0; i < emp.length; i++) {
-			if (emp[i].getSalary() < 1500.00) {
-				emp[i].addSalary();
-				System.out.println(i + ": " + emp[i] + " (salary was < than 1500)");
+		System.out.println("");
+		for (int i=0; i < quantEmp; i++) {
+			if (emp[quantEmp].getSalary() < 1500.00) {
+				emp[quantEmp].setSalary(emp[quantEmp].getSalary()+700);
+				System.out.println(i + ": " + emp[quantEmp] + " (salary was < than 1500)");
 			} else {
-				System.out.println(i + ": " + emp[i]);
+				System.out.println(i + ": " + emp[quantEmp]);
 			}
 		}
 		float percent = (100 * countF) / quantEmp;
-		System.out.println(countF+" are women, ad "+countM+" are men.");
+		System.out.println("\n"+countF+" are women, and "+countM+" are men.");
 		System.out.println("Percentage: M = "+(100 - percent)+" | F = " + percent);
 		
 		in.close();
