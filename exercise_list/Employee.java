@@ -7,7 +7,11 @@ public class Employee {
 	private Double salary;
 	
 	
-	public Employee(String name, Double salary) {
+	public Employee() {
+	}
+	
+	public Employee(Integer id, String name, Double salary) {
+		this.id = id;
 		this.name = name;
 		this.salary = salary;
 	}
@@ -32,7 +36,7 @@ public class Employee {
 		return salary;
 	}
 	
-	public void setSalary(Double salary) {
+	private void setSalary(Double salary) {
 		this.salary = salary;
 	}
 	
@@ -40,4 +44,11 @@ public class Employee {
 		percentage = this.getSalary() * percentage / 100;
 		this.setSalary(this.getSalary() + percentage);
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+	
+	
 }
