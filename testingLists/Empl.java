@@ -5,8 +5,7 @@ import exercise_list.Employee;
 public class Empl extends Employee {
 	
 	private String birth;
-	private Integer phone;
-	private Integer sales;
+	private Integer phone, sales, position;
 	
 	public Empl(String birth, Integer phone, Double salary, String name, Integer sales) {
 		this.setPhone(phone);
@@ -16,6 +15,14 @@ public class Empl extends Employee {
 		this.setSales(sales);
 	}
 
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+	
 	public Integer getSales() {
 		return sales;
 	}
@@ -47,10 +54,14 @@ public class Empl extends Employee {
 
 	@Override
 	public String toString() {
-		return "Name: "+this.getName()+"\n"+
+		return "\nName: "+this.getName()+"\n"+
 				"Phone: "+ this.getPhone()+"\n"+
 				"Birth: "+this.getBirth()+"\n"+
 				"Salary: "+this.getSalary()+"\n"+
 				"Sales: "+this.getSales();
+	}
+	
+	public String error() {
+		return "ERROR! This position doesn't exist.";
 	}
 }
