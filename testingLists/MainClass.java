@@ -1,6 +1,7 @@
 package testingLists;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -18,7 +19,6 @@ public class MainClass {
 
 		ArrayList<Empl> list = new ArrayList<>();
 		Empl emp = null;
-		RandomStuff rand = new RandomStuff();
 
 		System.out.println("Employees Data:");
 		for (int i = 0; i < n; i++) {
@@ -35,7 +35,7 @@ public class MainClass {
 			System.out.print("Quantity of sales: ");
 			Integer sales = input.nextInt();
 			emp = new Empl(birth, phone, salary, name, sales);
-
+			
 			list.add(emp);
 		}
 		System.out.println("\nSize of the list: " + list.size()+"\n");
@@ -52,7 +52,7 @@ public class MainClass {
 			System.out.println(obj);
 		}
 		
-		System.out.print("\nEnter the position of the element: ");
+		System.out.print("\nEnter the position of the element to find: ");
 		emp.setPosition(input.nextInt()-1);// -1 because if the user types "1" the program will undersatand "0". Then, It would commit a mistake. 
 		
 		if (emp.getPosition() > list.size()) {
@@ -62,7 +62,7 @@ public class MainClass {
 		}
 		
 		System.out.println("\nEnter the position of the element that you'd like to remove: ");
-		emp.setPosition(input.nextInt());
+		emp.setPosition(input.nextInt()-1);
 		
 		if (emp.getPosition() <= list.size()) {
 			list.remove(emp.getPosition());
@@ -76,12 +76,13 @@ public class MainClass {
 		}
 		
 		list.removeIf(x -> x.getSales() < 90);
-		System.out.println("List without people who sold less than 90: ");
+		System.out.println("\nList without people who sold less than 90: ");
 		for (Empl obj : list) {
 			System.out.println(obj);
 		}
 		
-		list.add(2, emp.getName());
+		Empl firstSales = list.stream().filter(x -> x.getSales() >= 90).findFirst().orElse(null);
+		System.out.println("The first one that sold most was: " + firstSales.verfSales() +" | Position: "+ list.indexOf(firstSales));
 		input.close();
 	}
 }

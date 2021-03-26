@@ -47,8 +47,8 @@ public class Empl extends Employee {
 		this.phone = phone;
 	}
 	
-	public Double verfSales(Integer quantSales) {
-		this.setSalary(this.getSalary() + 500);
+	public Double verfSales() {
+		this.setSalary(this.getSalary() + 500.00);
 		return this.getSalary();
 	}
 
